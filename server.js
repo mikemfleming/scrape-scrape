@@ -15,21 +15,22 @@ app.get('/scrape', function(req, res){
 
 			var json = { title: "", release: "", rating: ""}
 
-			$('.title_wrapper').filter(function(){
+			$('.title_wrapper h1').filter(function(){
 				var data = $(this)
-				title = data.children().first().text();
+				console.log(data)
+				title = data.text();
 				json.title = title
 			})
 
 			$('#titleYear').filter(function(){
 				var data = $(this)
-				release = data.text()
+				release = data.children().first().text()
 				json.release = release
 			})
 
-			$('.star-box-giga-star').filter(function(){
+			$('.ratingValue').filter(function(){
 				var data = $(this)
-				rating = data.text()
+				rating = data.children().first().children().first().text()
 				json.rating = rating
 			})
 		}
